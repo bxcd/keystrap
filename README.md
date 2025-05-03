@@ -1,59 +1,47 @@
 # keystrap
 
-A responsively-designed keyboard that plays and records musical notes. Backend made with Web Audio and MediaStream Recording APIs; UI made with Bootstrap Flexgrid.
-Adaptive layout responds to browser window size changes.
+A responsively-designed keyboard that plays and records musical notes. Adaptive layout responds to browser window size changes.
 
-Webpage: https://bxcd.github.io/keystrap
+Webpage: https://jrbasil.github.io/keystrap
 
-### Controls
+## Instructions
 
-Access controls by clicking app interface buttons or by typing QWERTY keyboard keys. For the latter choice, schema is below.
+To use: Press on the interface buttons or type on a QWERTY keyboard. For the latter choice, schema is below.
+##### A >> Play C (low)
+##### W >> Play C#
+##### S >> Play D
+##### E >> Play Eb
+##### D >> Play E
+##### F >> Play F
+##### R >> Play F#
+##### J >> Play G
+##### U >> Play G#
+##### K >> Play A
+##### I >> Play Bb
+##### L >> Play B
+##### ; >> Play C (high)
+##### C >> Set sound type to Sine Wave
+##### V >> Set sound type to Square Wave
+##### N >> Set sound type to Triangle Wave
+##### M >> Set sound type to Sawtooth Wave
+##### H or P >> Raise pitch
+##### G or Q >> Lower pitch
+##### O or Space >> Reset app
 
-A >> Play C (low)
+## Attribution
 
-W >> Play C#
+Backend made with Web Audio and MediaStream Recording APIs; UI made with Bootstrap Flexgrid.
 
-S >> Play D
+#### Author: John Basil
+#### Date:   22 Aug 2019
 
-E >> Play Eb
+## Walkthrough 
 
-D >> Play E
+### [Generate and record sounds with Oscillator and MediaRecorder](https://coded.art/generate-and-record-sounds-with-oscillator-and-mediarecorder/)
 
-F >> Play F
+This walkthrough addresses recording programmatically-generated sounds with the [Web Audio](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) and [MediaStream Recording](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API) APIs, as demonstrated by a simple [synthesizer app](https://jrbasil.github.io/keystrap) written with jQuery. For those unfamiliar with jQuery syntax, an [interactive tutorial](https://learn.freecodecamp.org/front-end-libraries/jquery) is available at [FreeCodeCamp](https://learn.freecodecamp.org/front-end-libraries/). Walkthroughs from [Soledad Penadés](https://soledadpenades.com/) and [Marc Gauthier](http://marcgg.com/) are reliable resources for understanding, independently, the sound –[recording](https://hacks.mozilla.org/2016/04/record-almost-everything-in-the-browser-with-mediarecorder/) and –[generating](http://marcgg.com/blog/2016/11/01/javascript-audio/) processes in greater detail.
 
-R >> Play F#
-
-J >> Play G
-
-U >> Play G#
-
-K >> Play A
-
-I >> Play Bb
-
-L >> Play B
-
-; >> Play C (high)
-
-C >> Set sound type to Sine Wave
-
-V >> Set sound type to Square Wave
-
-N >> Set sound type to Triangle Wave
-
-M >> Set sound type to Sawtooth Wave
-
-H or P >> Raise pitch
-
-G or Q >> Lower pitch
-
-O or Space >> Reset app
-
-## Walkthrough: [Generate and record sounds with Oscillator and MediaRecorder	](https://coded.art/generate-and-record-sounds-with-oscillator-and-mediarecorder/)
-
-This walkthrough addresses recording programmatically-generated sounds with the [Web Audio](https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API) and [MediaStream Recording](https://developer.mozilla.org/en-US/docs/Web/API/MediaStream_Recording_API) APIs, as demonstrated by a simple [synthesizer app](https://rjbx.github.io/keystrap) written with jQuery. For those unfamiliar with jQuery syntax, an [interactive tutorial](https://learn.freecodecamp.org/front-end-libraries/jquery) is available at [FreeCodeCamp](https://learn.freecodecamp.org/front-end-libraries/). Walkthroughs from [Soledad Penadés](https://soledadpenades.com/) and [Marc Gauthier](http://marcgg.com/) are reliable resources for understanding, independently, the sound –[recording](https://hacks.mozilla.org/2016/04/record-almost-everything-in-the-browser-with-mediarecorder/) and –[generating](http://marcgg.com/blog/2016/11/01/javascript-audio/) processes in greater detail.
-
-*Firefox Users: A [bug](https://bugzilla.mozilla.org/show_bug.cgi?id=1435625) currently prevents gain ramping. Until the bug is resolved, a Chromium-based browser is recommended.*
+*** Firefox Users: A [bug](https://bugzilla.mozilla.org/show_bug.cgi?id=1435625) currently prevents gain ramping. Until the bug is resolved, a Chromium-based browser is recommended. ***
 
 ### Setup
 
@@ -279,7 +267,7 @@ The `AudioContext` destination property is assigned an [`AudioDestinationNode
 
 #### Save instance of MediaStream destination node
 
-###### See also: Setup — Create global fields
+###### See also: [Setup — Create global fields](keystrap#create-global-fields)
 
 Save a reference to the MediaStream destination node that can be accessed from the logic involving both `Oscillator` and `MediaRecorder`.
 
@@ -297,7 +285,7 @@ speakerNode = context.destination;
 
 #### Connect MediaStream node to generated sound
 
-###### See also: Generate sounds — Configure Oscillator to produce distinct sounds
+###### See also: [Generate sounds — Configure Oscillator to produce distinct sounds](keystrap#configure-oscillator-to-produce-distinct-sounds)
 
 Connecting the `Gain` to the `MediaStream` destination node copies the sound output to the recorder stream.
 
@@ -311,9 +299,9 @@ function frequencyToSound(frequency) {
 
 #### Instantiate recorder from MediaStream node
 
-###### See also: Record sounds — Instantiate MediaRecorder from MediaStream
+###### See also: [Record sounds — Instantiate MediaRecorder from MediaStream](keystrap#instantiate-mediarecorder-from-mediastream)
 
-Feed the stream to the `MediaRecorder`. That’s it!
+Feed the stream to the `MediaRecorder`.
 
 ```
 captureMediaStream(recorderNode.stream);  
@@ -323,6 +311,10 @@ function captureMediaStream(stream) {
   ...  
 }
 ```
+
+#### Deploy and test
+
+All features should work as expected, based on this [prototype](https://jrbasil.github.io/keystrap). If not, review the previous steps and make any needed adjustments. If issues persist, check your local configuration, including browser type and browser settings, for compatibility with dependencies like WebAudio and MediaStream Recording.
 
 #### Additional features
 
